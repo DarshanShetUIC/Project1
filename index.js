@@ -5,7 +5,7 @@ const app = express()
 
 const { Pool } = require('pg');
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
+  connectionString: 'postgres://xidlemqkhgpplz:30ad931e175c211b92dfe567cca42b119ac9a103df99e7471b47bbed10e8ebbf@ec2-54-83-9-169.compute-1.amazonaws.com:5432/d3k5vmrk5j8afn',
   ssl: true
 });
 
@@ -20,11 +20,11 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.get('/about', (req, res) => res.send('Hello World!'))
 
 app.get('/db', (req, res) => {
-	client.query('SELECT * FROM test_table;', (err, res) => {
+	pool.query('SELECT * FROM test_table;', (err, res) => {
       if (err) throw err;
       for (let row of res.rows) {
          console.log(JSON.stringify(row));
       }
-      client.end();
+      pool.end();
     });
 })
