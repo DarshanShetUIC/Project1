@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <% include ../partials/header.ejs %>
+</head>
+
+<body>
+
+<% include ../partials/nav.ejs %>
+
+<div class="container">
+<h2>Database Results</h2>
+
+<ul>
+        <li><%- "Stock [" %> <%= data[0].symbol %><%- "] has current price: " %><%= data[0].price %></li>
+
+</ul>
+
+</div>
+
+</body>
+</html>
